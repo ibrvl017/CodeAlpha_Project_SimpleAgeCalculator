@@ -2,32 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Simple Calculator</title>
+    <title>Age Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calculator">
-        <div id="display">0</div>
-        <div class="buttons">
-            <button class="btn" onclick="clearDisplay()">C</button>
-            <button class="btn" onclick="appendToDisplay('/')">/</button>
-            <button class="btn" onclick="appendToDisplay('*')">*</button>
-            <button class="btn" onclick="appendToDisplay('-')">-</button>
-            <button class="btn" onclick="appendToDisplay('7')">7</button>
-            <button class="btn" onclick="appendToDisplay('8')">8</button>
-            <button class="btn" onclick="appendToDisplay('9')">9</button>
-            <button class="btn" onclick="appendToDisplay('+')">+</button>
-            <button class="btn" onclick="appendToDisplay('4')">4</button>
-            <button class="btn" onclick="appendToDisplay('5')">5</button>
-            <button class="btn" onclick="appendToDisplay('6')">6</button>
-            <button class="btn" onclick="appendToDisplay('1')">1</button>
-            <button class="btn" onclick="appendToDisplay('2')">2</button>
-            <button class="btn" onclick="appendToDisplay('3')">3</button>
-            <button class="btn" onclick="calculateResult()">=</button>
-            <button class="btn" onclick="appendToDisplay('0')">0</button>
-            <button class="btn" onclick="appendToDisplay('.')">.</button>
-        </div>
+    <div class="age-calculator">
+        <h2>Age Calculator</h2>
+        <form id="age-form">
+            <label for="day">Day of Birth:</label><br>
+            <input type="number" id="day" name="day" min="1" max="31" required><br><br>
+
+            <label for="month">Month of Birth:</label><br>
+            <input type="number" id="month" name="month" min="1" max="12" required><br><br>
+
+            <label for="year">Year of Birth:</label><br>
+            <input type="number" id="year" name="year" min="1900" max="2100" required><br><br>
+
+            <input type="button" value="Calculate Age" onclick="calculateAge()">
+        </form>
+        <div id="result"></div>
     </div>
+
+    <footer>
+        <p> AlphaCode_internship by ibrvl </p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

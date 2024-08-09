@@ -1,31 +1,24 @@
-let displayValue = '';
+function calculateAge() {
+    const day = document.getElementById('day').value;
+    const month = document.getElementById('month').value;
+    const year = document.getElementById('year').value;
 
-function clearDisplay() {
-    displayValue = '';
-    updateDisplay();
-}
-
-function appendToDisplay(value) {
-    displayValue += value;
-    updateDisplay();
-}
-
-function updateDisplay() {
-    document.getElementById('display').innerText = formatNumber(displayValue) || '0';
-}
-
-function calculateResult() {
-    try {
-        displayValue = eval(displayValue.replace(/,/g, '')).toString();
-        displayValue = formatNumber(displayValue);
-    } catch {
-        displayValue = 'Error';
+    if (!day || !month || !year) {
+        document.getElementById('result').innerText = 'Please enter a valid date of birth.';
+        return;
     }
-    updateDisplay();
-}
 
-function formatNumber(value) {
-    const parts = value.split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return parts.join('.');
+    const birthDate = new Date(year, month - 1, day);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    const dayDifference = today.getDate() - birthDate.getDate();
+
+    // Adjust age if the birthdate has not yet occurred this year
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+        age--;
+    }
+
+    document.getElementById('result').innerText = `Your age is ${age} years old.`;
 }
