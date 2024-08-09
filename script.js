@@ -22,3 +22,23 @@ function calculateAge() {
 
     document.getElementById('result').innerText = `Your age is ${age} years old.`;
 }
+
+// Animated Placeholder Text
+function typeEffect(element, text, delay = 100) {
+    let index = 0;
+    const interval = setInterval(() => {
+        if (index < text.length) {
+            element.placeholder += text[index];
+            index++;
+        } else {
+            clearInterval(interval);
+        }
+    }, delay);
+}
+
+// Apply the effect to each input field
+window.onload = function() {
+    typeEffect(document.getElementById('day'), 'Enter your day');
+    typeEffect(document.getElementById('month'), 'Enter your month');
+    typeEffect(document.getElementById('year'), 'Enter your year');
+}
